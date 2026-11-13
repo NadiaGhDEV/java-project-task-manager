@@ -48,6 +48,14 @@ public class Project {
         return tasks;
     }
 
+    public void addTask(Task task) {
+        tasks.add(task);
+    }
+
+    public boolean removeTask(Task task) {
+        return tasks.remove(task);
+    }
+
     @Override
     public String toString() {
         return String.format("Project[%d] '%s' | tasks=%d", projectId, name, tasks.size());

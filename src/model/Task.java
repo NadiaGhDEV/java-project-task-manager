@@ -12,14 +12,12 @@ public class Task {
     private LocalDate deadline;
     private int projectId;
 
-    public Task(String title, String description, Priority priority, LocalDate deadline, int projectId) {
+    public Task(String title, String description, Priority priority, int projectId) {
         this.taskId = counter++;
         this.title = title;
         this.description = description;
         this.status = Status.TODO;
-        //for security , can set default value
         this.priority = priority;
-        this.deadline = deadline;
         this.projectId = projectId;
     }
 
@@ -76,10 +74,10 @@ public class Task {
         this.projectId = projectId;
     }
 
-//    deadline
     @Override
     public String toString() {
         return String.format("Task[%d] '%s' | status=%s | priority=%s | deadline=%s | project=%d",
-                taskId, title, status, priority, deadline, projectId);
+                taskId, title, status, priority,
+                deadline == null ? " " : deadline, projectId);
     }
 }
