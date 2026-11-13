@@ -51,14 +51,13 @@ public class ProjectService {
         return new ArrayList<>(projects);
     }
 
-    public Project updateProj(int id, String name, String description) {
+    public void updateProj(int id, String name, String description) {
         Project project = findById(id);
         if (checkName(name)) {
             throw new InvalidProjectNameException(name);
         }
         project.setName(name);
         project.setDescription(description);
-        return project;
     }
 
     public void addTaskToProject(int projectId, Task task) {
@@ -74,7 +73,7 @@ public class ProjectService {
                 .collect(Collectors.toList());
     }
 
-    public List<Project> findByTaskCountBetween(int minNum1, int maxNum2) {
+    public List<Project> searchByTaskCountBetween(int minNum1, int maxNum2) {
         List<Project> tempProj = new ArrayList<>();
         for (Project project : projects) {
             if (project.getTasks().size() > minNum1 && project.getTasks().size() < maxNum2) {
